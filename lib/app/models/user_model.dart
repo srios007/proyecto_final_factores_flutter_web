@@ -5,6 +5,7 @@ class User {
   String? profilePictureUrl;
   String? name;
   String? lastname;
+  List<String>? role;
 
   User({
     this.id,
@@ -12,6 +13,7 @@ class User {
     this.enail,
     this.profilePictureUrl,
     this.name,
+    this.role,
   });
 
   User.fromJson(Map<String, dynamic> json) {
@@ -21,6 +23,7 @@ class User {
     profilePictureUrl = json['profilePictureUrl'];
     name = json['name'];
     lastname = json['lastname'];
+    role = json['role'].cast<String>();
   }
 
   Map<String, dynamic> toJson() {
@@ -31,7 +34,7 @@ class User {
     data['profilePictureUrl'] = profilePictureUrl;
     data['name'] = name;
     data['lastname'] = lastname;
-
+    data['role'] = role;
     return data;
   }
 }

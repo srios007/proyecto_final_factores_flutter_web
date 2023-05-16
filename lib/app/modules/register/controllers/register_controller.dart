@@ -100,6 +100,7 @@ class RegisterController extends GetxController {
     user.enail = emailController.text;
     user.enail = emailController.text;
     user.profilePictureUrl = pPicture;
+    user.role = ['shop'];
   }
 
   /// Registrar en firebase auth
