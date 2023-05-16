@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:proyecto_final_factores_flutter_web/app/utils/utils.dart';
+import 'package:proyecto_final_factores_flutter_web/app/widgets/widgets.dart';
 
 class PasswordInput extends StatelessWidget {
   PasswordInput({
@@ -16,7 +16,6 @@ class PasswordInput extends StatelessWidget {
     this.validator,
     this.keyboardType,
     this.textCapitalization,
-    this.width,
   });
 
   String hintText;
@@ -27,7 +26,6 @@ class PasswordInput extends StatelessWidget {
   TextCapitalization? textCapitalization;
   RxBool showPassword = false.obs;
   VoidCallback? showPasswordAction;
-  double? width;
   String titleText;
 
   @override
@@ -45,7 +43,9 @@ class PasswordInput extends StatelessWidget {
         ),
         Obx(
           () => SizedBox(
-            width:width ?? Get.width - 60,
+            width:ResponsiveWidget.isSmallScreen(Get.context!)
+                    ? Get.width
+                    : Get.width * 0.6,
             child: TextFormField(
               obscureText: !showPassword.value,
               textCapitalization: textCapitalization ?? TextCapitalization.none,

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:proyecto_final_factores_flutter_web/app/utils/utils.dart';
+import 'package:proyecto_final_factores_flutter_web/app/widgets/widgets.dart';
 
 class NormalInput extends StatelessWidget {
   NormalInput({
@@ -52,37 +53,33 @@ class NormalInput extends StatelessWidget {
               fontWeight: FontWeight.w600,
             ),
           ),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(
-                width: Get.width - 60,
-                child: TextFormField(
-                  textCapitalization:
-                      textCapitalization ?? TextCapitalization.none,
-                  inputFormatters: inputFormatters ?? [],
-                  decoration: InputDecoration(
-                    helperText: helperText,
-                    hintText: hintText,
-                    errorStyle: styles.errorStyle,
-                    enabledBorder: styles.borderTextField,
-                    focusedBorder: styles.borderTextField,
-                    errorBorder: styles.borderTextField,
-                    focusedErrorBorder: styles.borderTextField,
-                  ),
-                  controller: textEditingController,
-                  validator: validator ??
-                      (String? _) {
-                        if (textEditingController.text.isEmpty) {
-                          return 'Por favor, rellena este campo';
-                        } else {
-                          return null;
-                        }
-                      },
-                  keyboardType: keyboardType ?? TextInputType.text,
-                ),
+          SizedBox(
+            width: ResponsiveWidget.isSmallScreen(Get.context!)
+                ? Get.width
+                : Get.width * 0.6,
+            child: TextFormField(
+              textCapitalization: textCapitalization ?? TextCapitalization.none,
+              inputFormatters: inputFormatters ?? [],
+              decoration: InputDecoration(
+                helperText: helperText,
+                hintText: hintText,
+                errorStyle: styles.errorStyle,
+                enabledBorder: styles.borderTextField,
+                focusedBorder: styles.borderTextField,
+                errorBorder: styles.borderTextField,
+                focusedErrorBorder: styles.borderTextField,
               ),
-            ],
+              controller: textEditingController,
+              validator: validator ??
+                  (String? _) {
+                    if (textEditingController.text.isEmpty) {
+                      return 'Por favor, rellena este campo';
+                    } else {
+                      return null;
+                    }
+                  },
+              keyboardType: keyboardType ?? TextInputType.text,
+            ),
           ),
         ],
       ),

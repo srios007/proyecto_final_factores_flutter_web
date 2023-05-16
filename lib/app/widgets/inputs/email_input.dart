@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:proyecto_final_factores_flutter_web/app/utils/utils.dart';
+import 'package:proyecto_final_factores_flutter_web/app/widgets/widgets.dart';
 
 class EmailInput extends StatelessWidget {
   EmailInput({
@@ -11,7 +12,7 @@ class EmailInput extends StatelessWidget {
     this.helperText = '',
     this.border,
     this.textStyle,
-    this.width,
+ 
   });
 
   String titleText;
@@ -20,7 +21,7 @@ class EmailInput extends StatelessWidget {
   TextEditingController textEditingController;
   InputBorder? border;
   TextStyle? textStyle;
-  double? width;
+ 
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +37,9 @@ class EmailInput extends StatelessWidget {
           ),
         ),
         SizedBox(
-          width: width ?? Get.width - 60,
+          width: ResponsiveWidget.isSmallScreen(Get.context!)
+                    ? Get.width
+                    : Get.width * 0.6,
           child: TextFormField(
             style: textStyle,
             decoration: InputDecoration(

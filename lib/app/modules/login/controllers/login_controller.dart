@@ -26,6 +26,10 @@ class LoginController extends GetxController {
       'scrollController.position.pixels: ${scrollController.position.pixels}',
     );
   }
+    /// Va a la pestaña de registro
+  goToRegister() {
+    Get.toNamed(Routes.REGISTER);
+  }
 
   login() async {
     if (formKeyLogin.currentState!.validate()) {

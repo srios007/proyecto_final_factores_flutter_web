@@ -29,43 +29,10 @@ class LoginView extends GetView<LoginController> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const Text(
-                          'Empresas',
-                          style: TextStyle(
-                              color: Palette.mainBlue,
-                              fontSize: 42,
-                              fontWeight: FontWeight.bold),
-                        ),
+                        titleSection(),
                         const SizedBox(height: 50),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 30),
-                          child: EmailInput(
-                            width: Get.width * 0.6,
-                            hintText: 'example@udistrital.app',
-                            textEditingController: controller.emailController,
-                            titleText: 'Email',
-                          ),
-                        ),
-                        const SizedBox(height: 20),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 30),
-                          child: PasswordInput(
-                            width: Get.width * 0.6,
-                            hintText: 'Contraseña',
-                            showPassword: controller.visiblePassword,
-                            showPasswordAction: controller.showPassword,
-                            textEditingController:
-                                controller.passwordController,
-                            titleText: 'Escribe tu contraseña',
-                          ),
-                        ),
-                        const SizedBox(height: 30),
-                        CustomButton(
-                          isLoading: controller.isLoading,
-                          onPressed: controller.login,
-                          buttonText: 'Ingresar',
-                          width: 300,
-                        )
+                        imputsSection(context),
+                        buttonLabelSection()
                       ],
                     ),
                   ),
@@ -73,6 +40,92 @@ class LoginView extends GetView<LoginController> {
               ],
             ),
           ),
+        ),
+      ),
+    );
+  }
+
+  buttonLabelSection() {
+    return Column(
+      children: [
+        CustomButton(
+          isLoading: controller.isLoading,
+          onPressed: controller.login,
+          buttonText: 'Ingresar',
+          width: 300,
+        ),
+        const SizedBox(height: 30),
+        registerLabel(),
+        const SizedBox(height: 30),
+      ],
+    );
+  }
+
+  imputsSection(BuildContext context) {
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 30),
+          child: EmailInput(
+          
+            hintText: 'example@udistrital.app',
+            textEditingController: controller.emailController,
+            titleText: 'Email',
+          ),
+        ),
+        const SizedBox(height: 20),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 30),
+          child: PasswordInput(
+            
+            hintText: 'Contraseña',
+            showPassword: controller.visiblePassword,
+            showPasswordAction: controller.showPassword,
+            textEditingController: controller.passwordController,
+            titleText: 'Escribe tu contraseña',
+          ),
+        ),
+        const SizedBox(height: 30),
+      ],
+    );
+  }
+
+  Text titleSection() {
+    return const Text(
+      'Empresas',
+      style: TextStyle(
+          color: Palette.mainBlue, fontSize: 42, fontWeight: FontWeight.bold),
+    );
+  }
+
+  /// Label de regístrate
+  registerLabel() {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 20),
+      child: GestureDetector(
+        onTap: controller.goToRegister,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              '¿No tienes una cuenta? ',
+              style: TextStyle(
+                color: Palette.mainBlue,
+                fontSize:
+                    ResponsiveWidget.isSmallScreen(Get.context!) ? 14 : 20,
+                fontWeight: FontWeight.w300,
+              ),
+            ),
+            Text(
+              'Regístrate',
+              style: TextStyle(
+                color: Palette.mainBlue,
+                fontSize:
+                    ResponsiveWidget.isSmallScreen(Get.context!) ? 14 : 20,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+          ],
         ),
       ),
     );
