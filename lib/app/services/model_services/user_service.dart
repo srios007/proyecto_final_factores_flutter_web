@@ -100,6 +100,8 @@ class UserService {
       querySnapshot.data() as Map<String, dynamic>,
     );
   }
+
+  validateLogin() {}
 }
 
 UserService userService = UserService();
