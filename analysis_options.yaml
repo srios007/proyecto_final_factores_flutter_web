@@ -1,4 +1,59 @@
-include: package:flutter_lints/flutter.yaml
+analyzer:
+  language:
+  errors:
+    deprecated_member_use_from_same_package: ignore
+    unnecessary_null_comparison: ignore
+  exclude: 
+    - flutter_frontend_server/test/fixtures/lib/main.dart
+
 linter:
   rules:
+    - always_use_package_imports # we do this commonly
+    - control_flow_in_finally
+    - curly_braces_in_flow_control_structures
+    - deprecated_consistency
+    - directives_ordering
+    - implementation_imports
+    - overridden_fields
+    - package_api_docs
+    - package_names
+    - package_prefixed_library_names
+    - prefer_const_constructors
+    - prefer_const_constructors_in_immutables
+    - prefer_const_declarations
+    - prefer_const_literals_to_create_immutables
+    - prefer_contains
+    - prefer_equal_for_default_values
+    - prefer_final_fields
+    - prefer_final_in_for_each
+    - prefer_for_elements_to_map_fromIterable
+    - prefer_is_empty
+    - prefer_is_not_empty
+    - prefer_is_not_operator
+    - prefer_iterable_whereType
+    - prefer_single_quotes
+    - secure_pubspec_urls
+    - sized_box_for_whitespace
+    - slash_for_doc_comments
+    - sort_child_properties_last
+    - unnecessary_brace_in_string_interps
+    - unnecessary_constructor_name
+    - unnecessary_getters_setters
+    - unnecessary_late
+    - unnecessary_new
+    - unnecessary_null_aware_assignments
+    - unnecessary_null_aware_operator_on_extension_on_nullable
+    - unnecessary_null_checks
+    - unnecessary_null_in_if_null_operators
+    - unnecessary_overrides
+    - unnecessary_parenthesis
+    - unnecessary_statements
+    - unnecessary_string_escapes
+    - unnecessary_string_interpolations
+    - unnecessary_this
+    - unnecessary_to_list_in_spreads
+    - use_super_parameters
+    - use_test_throws_matchers
+    - valid_regexps
+    - void_checks
     

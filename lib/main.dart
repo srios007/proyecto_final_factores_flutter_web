@@ -4,6 +4,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:proyecto_final_factores_flutter_web/app/services/services.dart';
 import 'package:proyecto_final_factores_flutter_web/app/utils/utils.dart';
 import 'package:proyecto_final_factores_flutter_web/firebase_options.dart';
 
@@ -48,12 +49,12 @@ class MyApp extends StatelessWidget {
   }
 
   String _setInitialRoute() {
-    // final firebaseUser = auth.getCurrentUser();
-    // if (firebaseUser != null) {
+    final firebaseUser = auth.getCurrentUser();
+    if (firebaseUser != null) {
       return Routes.HOME;
-    // } else {
-    //   return Routes.LOGIN;
-    // }
+    } else {
+      return Routes.LOGIN;
+    }
   }
 }
 
