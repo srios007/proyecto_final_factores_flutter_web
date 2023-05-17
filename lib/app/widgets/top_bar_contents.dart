@@ -33,7 +33,7 @@ class _TopBarContentsState extends State<TopBarContents> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               GestureDetector(
-                onTap: () => Get.toNamed(Routes.HOME),
+                onTap: () => Get.offAllNamed(Routes.HOME),
                 child: Image.asset(
                   'assets/images/main_logo.png',
                   height: 45,
@@ -52,7 +52,7 @@ class _TopBarContentsState extends State<TopBarContents> {
                               : _isHovering[0] = false;
                         });
                       },
-                      onTap: () => Get.toNamed(Routes.REGISTER_PRODUCT),
+                      onTap: () => Get.offAllNamed(Routes.REGISTER_PRODUCT),
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
                         children: [

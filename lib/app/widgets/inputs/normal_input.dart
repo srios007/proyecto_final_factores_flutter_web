@@ -21,6 +21,7 @@ class NormalInput extends StatelessWidget {
     this.keyboardType,
     this.textCapitalization,
     this.inputFormatters,
+    this.maxLines,
   });
 
   String hintText;
@@ -37,6 +38,7 @@ class NormalInput extends StatelessWidget {
   TextCapitalization? textCapitalization;
   List<TextInputFormatter>? inputFormatters;
   String titleText;
+  int? maxLines;
 
   @override
   Widget build(BuildContext context) {
@@ -60,6 +62,7 @@ class NormalInput extends StatelessWidget {
             child: TextFormField(
               textCapitalization: textCapitalization ?? TextCapitalization.none,
               inputFormatters: inputFormatters ?? [],
+              maxLines: maxLines ?? 1,
               decoration: InputDecoration(
                 helperText: helperText,
                 hintText: hintText,
@@ -68,6 +71,7 @@ class NormalInput extends StatelessWidget {
                 focusedBorder: styles.borderTextField,
                 errorBorder: styles.borderTextField,
                 focusedErrorBorder: styles.borderTextField,
+                
               ),
               controller: textEditingController,
               validator: validator ??

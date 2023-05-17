@@ -4,6 +4,7 @@ import 'package:proyecto_final_factores_flutter_web/app/models/product_model.dar
 
 import 'package:proyecto_final_factores_flutter_web/app/services/services.dart';
 import 'package:proyecto_final_factores_flutter_web/app/utils/utils.dart';
+import 'package:proyecto_final_factores_flutter_web/app/widgets/widgets.dart';
 
 class ProductsService {
   factory ProductsService() {
@@ -25,6 +26,30 @@ class ProductsService {
       ));
     }
     return products;
+  }
+
+  Future<bool> save({
+    required Product product,
+  }) async {
+    try {
+      final result = await database.saveDocument(
+          collection: productsReference, data: product.toJson());
+      print('saveDocument $result');
+      if (result) {
+        return true;
+      } else {
+        CustomSnackBars.showErrorSnackBar(
+          'Hubo un error al crear el producto',
+        );
+        return false;
+      }
+    } on Exception catch (e) {
+      print(e);
+      CustomSnackBars.showErrorSnackBar(
+        'Hubo un error al crear el producto',
+      );
+      return false;
+    }
   }
 }
 

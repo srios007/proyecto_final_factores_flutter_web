@@ -1053,6 +1053,20 @@ class Database {
       return false;
     }
   }
+    Future<bool> saveDocument({
+    required String collection,
+    required Map<String, dynamic> data,
+  }) async {
+    try {
+      final reference = await firestore.collection(collection).add(data);
+      data['id'] = reference.id;
+      await reference.update(data);
+      return true;
+    } on Exception catch (e) {
+      print(e);
+      return false;
+    }
+  }
 }
 
 final Database database = Database();

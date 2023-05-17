@@ -67,7 +67,6 @@ class LoginView extends GetView<LoginController> {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 30),
           child: EmailInput(
-          
             hintText: 'example@udistrital.app',
             textEditingController: controller.emailController,
             titleText: 'Email',
@@ -77,7 +76,6 @@ class LoginView extends GetView<LoginController> {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 30),
           child: PasswordInput(
-            
             hintText: 'Contraseña',
             showPassword: controller.visiblePassword,
             showPasswordAction: controller.showPassword,
