@@ -160,7 +160,7 @@ class HomeView extends GetView<HomeController> {
                       const Icon(Icons.error),
                 ),
               ),
-              const Spacer(flex: 2),
+              const Spacer(flex: 1),
               Text(
                 product.name!,
                 textAlign: TextAlign.start,
