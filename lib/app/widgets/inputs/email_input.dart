@@ -25,46 +25,49 @@ class EmailInput extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          titleText,
-          style: const TextStyle(
-            color: Palette.mainBlue,
-            fontSize: 16,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-        SizedBox(
-          width: ResponsiveWidget.isSmallScreen(Get.context!)
-                    ? Get.width
-                    : Get.width * 0.6,
-          child: TextFormField(
-            style: textStyle,
-            decoration: InputDecoration(
-              helperText: helperText,
-              hintText: hintText,
-              errorStyle: styles.errorStyle,
-              enabledBorder: styles.borderTextField,
-              focusedBorder: styles.borderTextField,
-              errorBorder: styles.borderTextField,
-              focusedErrorBorder: styles.borderTextField,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 30),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            titleText,
+            style: const TextStyle(
+              color: Palette.mainBlue,
+              fontSize: 16,
+              fontWeight: FontWeight.w600,
             ),
-            controller: textEditingController,
-            validator: (String? _) {
-              if (textEditingController.text.isEmpty) {
-                return 'Por favor, rellena este campo';
-              } else if (!GetUtils.isEmail(textEditingController.text)) {
-                return 'Ingresa un email válido';
-              } else {
-                return null;
-              }
-            },
-            keyboardType: TextInputType.emailAddress,
           ),
-        ),
-      ],
+          SizedBox(
+            width: ResponsiveWidget.isSmallScreen(Get.context!)
+                      ? Get.width
+                      : Get.width * 0.6,
+            child: TextFormField(
+              style: textStyle,
+              decoration: InputDecoration(
+                helperText: helperText,
+                hintText: hintText,
+                errorStyle: styles.errorStyle,
+                enabledBorder: styles.borderTextField,
+                focusedBorder: styles.borderTextField,
+                errorBorder: styles.borderTextField,
+                focusedErrorBorder: styles.borderTextField,
+              ),
+              controller: textEditingController,
+              validator: (String? _) {
+                if (textEditingController.text.isEmpty) {
+                  return 'Por favor, rellena este campo';
+                } else if (!GetUtils.isEmail(textEditingController.text)) {
+                  return 'Ingresa un email válido';
+                } else {
+                  return null;
+                }
+              },
+              keyboardType: TextInputType.emailAddress,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

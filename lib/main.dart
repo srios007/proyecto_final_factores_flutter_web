@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
       ],
       supportedLocales: const [Locale('es', '')],
       useInheritedMediaQuery: true,
-      title: 'Application',
+      title: 'Shop',
       initialRoute: _setInitialRoute(),
       getPages: AppPages.routes,
       debugShowCheckedModeBanner: false,

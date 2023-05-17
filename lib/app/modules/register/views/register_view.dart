@@ -44,15 +44,6 @@ class RegisterView extends GetView<RegisterController> {
   profilePicture() {
     return GestureDetector(onTap: () {
       controller.showPicker();
-      // imagePickAlert.profilePictureAlert(
-      //   context: Get.context!,
-      //   fromPhoto: () {
-      //     controller.pickPicture(true);
-      //   },
-      //   fromGallery: () {
-      //     controller.pickPicture(false);
-      //   },
-      // );
     }, child: Obx(
       () {
         return controller.isLoadingPP.value
