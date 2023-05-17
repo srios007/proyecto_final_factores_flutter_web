@@ -28,6 +28,19 @@ class ProductsService {
     return products;
   }
 
+  getAllProductsByShop(String id) async {
+    RxList products = [].obs;
+    final querySnapshot = await database.getDataByCustonParam(id, productsReference, 'shopId');
+    if (querySnapshot.docs.isEmpty) return [];
+
+    for (final product in querySnapshot.docs) {
+      products.add(Product.fromJson(
+        product.data() as Map<String, dynamic>,
+      ));
+    }
+    return products;
+  }
+
   Future<bool> save({
     required Product product,
   }) async {

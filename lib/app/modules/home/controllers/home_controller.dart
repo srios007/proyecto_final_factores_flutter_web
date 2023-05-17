@@ -20,8 +20,7 @@ class HomeController extends GetxController {
   getData() async {
     isLoading.value = true;
     user = (await userService.getCurrentUser())!;
-    // products = await productsService.getAllProducts();
-    print(products.length);
+    products.value = await productsService.getAllProductsByShop(user.id!);
     isLoading.value = false;
   }
 

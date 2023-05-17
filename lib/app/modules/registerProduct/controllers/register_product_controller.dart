@@ -52,7 +52,6 @@ class RegisterProductController extends GetxController {
     product.price = int.parse(priceController.text);
     product.imageUrl = pPicture;
     product.shopId = user.id;
-    print(product.toJson().toString());
   }
 
   /// Valida si tiene o no foto para subirla
@@ -74,7 +73,6 @@ class RegisterProductController extends GetxController {
   /// Guarda el usuario en firebase
   saveUserInFirebase() async {
     final result = await productsService.save(product: product);
-    print('productsService ${result}');
     if (result) {
       Get.offAllNamed(Routes.HOME);
     } else {

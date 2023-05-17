@@ -101,7 +101,16 @@ class UserService {
     );
   }
 
-  validateLogin() {}
+  Future<bool> validateLogin() async {
+    User user = User();
+    user = (await getCurrentUser())!;
+    if (user.role!.contains('shop')) {
+      return true;
+    } else {
+      await auth.signOut();
+      return false;
+    }
+  }
 }
 
 UserService userService = UserService();
