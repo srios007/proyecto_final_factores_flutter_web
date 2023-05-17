@@ -57,7 +57,7 @@ class _TopBarContentsState extends State<TopBarContents> {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           Text(
-                            'Registrar produto',
+                            'Registrar producto',
                             style: TextStyle(
                               color: _isHovering[0]
                                   ? Palette.lightGreen

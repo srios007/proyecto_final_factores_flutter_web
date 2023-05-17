@@ -98,7 +98,7 @@ class HomeView extends GetView<HomeController> {
       padding: const EdgeInsets.symmetric(horizontal: 40),
       sliver: SliverGrid(
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 6,
+          crossAxisCount: 5,
           childAspectRatio: 0.7,
           crossAxisSpacing: 20,
           mainAxisSpacing: 20,
@@ -137,30 +137,27 @@ class HomeView extends GetView<HomeController> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 40),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(20),
-                  child: CachedNetworkImage(
-                    filterQuality: FilterQuality.none,
-                    imageUrl: product.imageUrl!,
-                    width: Get.width,
-                    height: 200,
-                    fit: BoxFit.cover,
-                    progressIndicatorBuilder:
-                        (context, url, downloadProgress) => Padding(
-                      padding: const EdgeInsets.all(20),
-                      child: Center(
-                        child: LoadingAnimationWidget.twistingDots(
-                          leftDotColor: Palette.mainBlue,
-                          rightDotColor: Palette.green,
-                          size: 20,
-                        ),
+              ClipRRect(
+                borderRadius: BorderRadius.circular(20),
+                child: CachedNetworkImage(
+                  filterQuality: FilterQuality.none,
+                  imageUrl: product.imageUrl!,
+                  width: Get.width,
+                  height: Get.height * 0.1,
+                  fit: BoxFit.cover,
+                  progressIndicatorBuilder:
+                      (context, url, downloadProgress) => Padding(
+                    padding: const EdgeInsets.all(20),
+                    child: Center(
+                      child: LoadingAnimationWidget.twistingDots(
+                        leftDotColor: Palette.mainBlue,
+                        rightDotColor: Palette.green,
+                        size: 20,
                       ),
                     ),
-                    errorWidget: (context, url, error) =>
-                        const Icon(Icons.error),
                   ),
+                  errorWidget: (context, url, error) =>
+                      const Icon(Icons.error),
                 ),
               ),
               const Spacer(flex: 2),
