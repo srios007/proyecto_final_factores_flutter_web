@@ -42,31 +42,26 @@ class RegisterView extends GetView<RegisterController> {
   }
 
   profilePicture() {
-    return GestureDetector(
-        onTap: () {
-          imagePickAlert.profilePictureAlert(
-            context: Get.context!,
-            fromPhoto: () {
-              controller.pickPicture(true);
-            },
-            fromGallery: () {
-              controller.pickPicture(false);
-            },
-          );
-        },
-        child: noPhoto()
-        // Obx(
-        //   () {
-        // return
-
-        //         return controller.isLoadingPP.value
-        // ? noPhoto()
-        // : controller.profilePicture != null
-        //     ? withPhoto()
-        //     : noPhoto();
-        // },
-        // )
-        );
+    return GestureDetector(onTap: () {
+      controller.showPicker();
+      // imagePickAlert.profilePictureAlert(
+      //   context: Get.context!,
+      //   fromPhoto: () {
+      //     controller.pickPicture(true);
+      //   },
+      //   fromGallery: () {
+      //     controller.pickPicture(false);
+      //   },
+      // );
+    }, child: Obx(
+      () {
+        return controller.isLoadingPP.value
+            ? noPhoto()
+            : controller.bytesFromPicker != null
+                ? withPhoto()
+                : noPhoto();
+      },
+    ));
   }
 
   /// Container cuando el usuario sube una foto
@@ -81,13 +76,13 @@ class RegisterView extends GetView<RegisterController> {
           width: 2,
         ),
       ),
-      // child: ClipRRect(
-      //   borderRadius: BorderRadius.circular(100),
-      //   child: Image.file(
-      //     controller.profilePicture!,
-      //     fit: BoxFit.cover,
-      //   ),
-      // ),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(100),
+        child: Image.memory(
+          controller.bytesFromPicker!,
+          fit: BoxFit.cover,
+        ),
+      ),
     );
   }
 

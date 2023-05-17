@@ -1,13 +1,12 @@
-import 'dart:html';
+import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:image_picker_web/image_picker_web.dart';
 import 'package:proyecto_final_factores_flutter_web/app/models/models.dart';
 import 'package:proyecto_final_factores_flutter_web/app/routes/app_pages.dart';
 import 'package:proyecto_final_factores_flutter_web/app/services/services.dart';
 import 'package:proyecto_final_factores_flutter_web/app/widgets/widgets.dart';
-import 'package:permission_handler/permission_handler.dart';
-import 'package:image_picker/image_picker.dart';
 
 class RegisterController extends GetxController {
   ScrollController scrollController = ScrollController();
@@ -16,16 +15,16 @@ class RegisterController extends GetxController {
   final TextEditingController nameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passController = TextEditingController();
-  final ImagePicker _picker = ImagePicker();
-  User user = User();
   final key = GlobalKey<FormState>();
   RxBool showConfPass = false.obs;
   RxBool isLoadingPP = false.obs;
   RxBool isLoading = false.obs;
   RxBool showPass = false.obs;
+  Uint8List? bytesFromPicker;
   RxBool terms = false.obs;
   late var signUpResult;
-  File? profilePicture;
+  String selctFile = '';
+  User user = User();
 
   scrollListener() {
     print(
@@ -56,41 +55,6 @@ class RegisterController extends GetxController {
   /// Va a la pantalla de políticas de privacidad
   goToPolicies() {
     print('LLeva a políticas de privacidad');
-  }
-
-  /// Subir foto de perfil
-  pickPicture(bool isCamera) async {
-    if (await Permission.mediaLibrary.request().isGranted &&
-        await Permission.camera.request().isGranted) {
-      isLoadingPP.value = true;
-      try {
-        final result = await _picker.pickImage(
-            source: isCamera ? ImageSource.camera : ImageSource.gallery);
-
-        if (result != null) {
-          profilePicture = null;
-          // profilePicture = File(result.path);
-          profilePicture = File([], result.path);
-          isLoadingPP.value = false;
-          Get.back();
-        } else {
-          isLoadingPP.value = false;
-          Get.back();
-        }
-      } catch (e) {
-        print(e);
-        CustomSnackBars.showErrorSnackBar(
-          'Hubo un error al cargar tu foto de perfil',
-        );
-        isLoadingPP.value = false;
-      }
-    } else {
-      CustomSnackBars.showErrorSnackBar(
-        'Por favor, activa los permisos desde la configuración de tu celular '
-        'para poder acceder a los archivos que necesites y tomar fotos',
-      );
-      isLoadingPP.value = false;
-    }
   }
 
   /// Asignar usuario al modelo
@@ -132,13 +96,15 @@ class RegisterController extends GetxController {
 
   /// Valida si tiene o no foto para subirla
   validateProfilePicture() async {
-    if (profilePicture != null) {
-      // final urlRutResult = await storageService.uploadFile(
-      //   signUpResult.user.uid,
-      //   'FotoPerfil',
-      //   profilePicture!,
-      // );
-      // assignUser(urlRutResult!);
+    if (bytesFromPicker != null) {
+      final urlRutResult = await storageService.uploadFile(
+        signUpResult.user.uid,
+        'FotoPerfil',
+        bytesFromPicker!,
+      );
+      print(urlRutResult);
+
+      assignUser(urlRutResult!);
     } else {
       assignUser('');
     }
@@ -183,5 +149,11 @@ class RegisterController extends GetxController {
         isLoading.value = false;
       }
     }
+  }
+
+  showPicker() async {
+    isLoadingPP.value = true;
+    bytesFromPicker = await ImagePickerWeb.getImageAsBytes();
+    isLoadingPP.value = false;
   }
 }

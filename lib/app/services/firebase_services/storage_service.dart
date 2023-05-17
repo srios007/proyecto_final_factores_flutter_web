@@ -1,25 +1,16 @@
 import 'dart:io';
+import 'dart:typed_data';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:flutter_image_compress/flutter_image_compress.dart';
-import 'package:path_provider/path_provider.dart' as path_provider;
+ 
 
 class StorageService {
-  Future<String?> uploadFile(String userID, String folder, File file) async {
-    final tmpDir = await path_provider.getTemporaryDirectory();
-    final targetName = DateTime.now().millisecondsSinceEpoch;
-    final File? compressFile = await FlutterImageCompress.compressAndGetFile(
-      file.path,
-      '${tmpDir.absolute.path}/$targetName.jpg',
-      quality: 70,
-      // minWidth: 500,
-      // minHeight: 500,
-    );
+  Future<String?> uploadFile(String userID, String folder, Uint8List file) async {
 
     final fstorage = FirebaseStorage.instance;
-    final File image = compressFile!;
+ 
     final Reference storageRef =
         fstorage.ref().child('Users_files/$userID/$folder');
-    final UploadTask uploadTask = storageRef.putFile(image);
+    final UploadTask uploadTask = storageRef.putData(file);
     return (await uploadTask).ref.getDownloadURL();
   }
 

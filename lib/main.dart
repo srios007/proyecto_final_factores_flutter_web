@@ -51,10 +51,10 @@ class MyApp extends StatelessWidget {
   String _setInitialRoute() {
     final firebaseUser = auth.getCurrentUser();
     if (firebaseUser != null) {
-      return Routes.HOME;
+      // return Routes.HOME;
+      return Routes.LOGIN;
     } else {
       return Routes.LOGIN;
     }
   }
 }
-
