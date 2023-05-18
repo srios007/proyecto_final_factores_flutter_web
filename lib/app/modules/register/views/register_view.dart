@@ -1,6 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:proyecto_final_factores_flutter_web/app/modules/register/controllers/register_controller.dart';
+import 'package:proyecto_final_factores_flutter_web/app/routes/app_pages.dart';
 import 'package:proyecto_final_factores_flutter_web/app/utils/utils.dart';
 import 'package:proyecto_final_factores_flutter_web/app/widgets/widgets.dart';
 
@@ -9,9 +11,17 @@ class RegisterView extends GetView<RegisterController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // extendBodyBehindAppBar: true,
       appBar: AppBar(
-        automaticallyImplyLeading: true,
+        leading: GestureDetector(
+          onTap: () {
+            Get.offAllNamed(Routes.LOGIN);
+          },
+          child: const Icon(
+            CupertinoIcons.back,
+            color: Palette.mainBlue,
+            size: 32,
+          ),
+        ),
       ),
       body: SafeArea(
         child: WebScrollbar(
@@ -25,6 +35,7 @@ class RegisterView extends GetView<RegisterController> {
                 hasScrollBody: false,
                 child: Column(
                   children: [
+                    titleSection(),
                     const SizedBox(height: 30),
                     profilePicture(),
                     const SizedBox(height: 30),
@@ -40,6 +51,17 @@ class RegisterView extends GetView<RegisterController> {
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  titleSection() {
+    return const Text(
+      'Registra tu empresa',
+      style: TextStyle(
+        color: Palette.mainBlue,
+        fontSize: 48,
+        fontWeight: FontWeight.w500,
       ),
     );
   }

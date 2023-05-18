@@ -144,7 +144,7 @@ class HomeView extends GetView<HomeController> {
                   imageUrl: product.imageUrl!,
                   width: Get.width,
                   height: Get.height * 0.1,
-                  fit: BoxFit.cover,
+                  fit: BoxFit.contain,
                   progressIndicatorBuilder: (context, url, downloadProgress) =>
                       Padding(
                     padding: const EdgeInsets.all(20),
