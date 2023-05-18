@@ -9,7 +9,10 @@ class RegisterView extends GetView<RegisterController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      extendBodyBehindAppBar: true,
+      // extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        automaticallyImplyLeading: true,
+      ),
       body: SafeArea(
         child: WebScrollbar(
           color: Colors.white,
@@ -140,15 +143,9 @@ class RegisterView extends GetView<RegisterController> {
       child: Column(
         children: [
           NormalInput(
-            titleText: 'Nombre',
-            hintText: 'Escribe tu nombre',
+            titleText: 'Nombre de la empresa',
+            hintText: 'Escribe el nombre de tu empresa',
             textEditingController: controller.nameController,
-          ),
-          const SizedBox(height: 25),
-          NormalInput(
-            titleText: 'Apellido',
-            hintText: 'Escribe tu apellido',
-            textEditingController: controller.lastnameController,
           ),
           const SizedBox(height: 25),
           EmailInput(

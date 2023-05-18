@@ -145,8 +145,8 @@ class HomeView extends GetView<HomeController> {
                   width: Get.width,
                   height: Get.height * 0.1,
                   fit: BoxFit.cover,
-                  progressIndicatorBuilder:
-                      (context, url, downloadProgress) => Padding(
+                  progressIndicatorBuilder: (context, url, downloadProgress) =>
+                      Padding(
                     padding: const EdgeInsets.all(20),
                     child: Center(
                       child: LoadingAnimationWidget.twistingDots(
@@ -156,8 +156,7 @@ class HomeView extends GetView<HomeController> {
                       ),
                     ),
                   ),
-                  errorWidget: (context, url, error) =>
-                      const Icon(Icons.error),
+                  errorWidget: (context, url, error) => const Icon(Icons.error),
                 ),
               ),
               const Spacer(),

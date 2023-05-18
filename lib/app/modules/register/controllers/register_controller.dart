@@ -10,7 +10,6 @@ import 'package:proyecto_final_factores_flutter_web/app/widgets/widgets.dart';
 
 class RegisterController extends GetxController {
   ScrollController scrollController = ScrollController();
-  final TextEditingController lastnameController = TextEditingController();
   final TextEditingController confPassController = TextEditingController();
   final TextEditingController nameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
@@ -60,7 +59,7 @@ class RegisterController extends GetxController {
   /// Asignar usuario al modelo
   assignUser(String pPicture) {
     user.name = nameController.text;
-    user.lastname = lastnameController.text;
+    user.lastname = '';
     user.enail = emailController.text;
     user.enail = emailController.text;
     user.profilePictureUrl = pPicture;
