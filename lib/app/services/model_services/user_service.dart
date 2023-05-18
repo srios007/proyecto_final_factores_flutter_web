@@ -86,9 +86,7 @@ class UserService {
     return user;
   }
 
-  Future<User?> getUserDocumentById(
-    String documentId,
-  ) async {
+  Future<User?> getUserDocumentById(String documentId) async {
     final querySnapshot = await database.getDocument(
       collection: 'users',
       documentId: documentId,

@@ -58,8 +58,8 @@ class RegisterView extends GetView<RegisterController> {
   /// Container cuando el usuario sube una foto
   withPhoto() {
     return Container(
-      width: 100,
-      height: 100,
+      width: ResponsiveWidget.isSmallScreen(Get.context!) ? 100 : 480,
+      height: ResponsiveWidget.isSmallScreen(Get.context!) ? 100 : 480,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         border: Border.all(
@@ -80,14 +80,14 @@ class RegisterView extends GetView<RegisterController> {
   /// Container cuando el usuario no tiene foto
   noPhoto() {
     return SizedBox(
-      height: 120,
-      width: 120,
+      height: ResponsiveWidget.isSmallScreen(Get.context!) ? 120 : 500,
+      width: ResponsiveWidget.isSmallScreen(Get.context!) ? 120 : 500,
       child: Stack(
         children: [
           Center(
             child: Container(
-              width: 100,
-              height: 100,
+              width: ResponsiveWidget.isSmallScreen(Get.context!) ? 100 : 480,
+              height: ResponsiveWidget.isSmallScreen(Get.context!) ? 100 : 480,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 border: Border.all(
@@ -95,9 +95,9 @@ class RegisterView extends GetView<RegisterController> {
                   width: 2,
                 ),
               ),
-              child: const Icon(
+              child: Icon(
                 Icons.person_rounded,
-                size: 30,
+                size: ResponsiveWidget.isSmallScreen(Get.context!) ? 30 : 100,
                 color: Palette.mainBlue,
               ),
             ),
@@ -105,12 +105,14 @@ class RegisterView extends GetView<RegisterController> {
           Align(
             alignment: Alignment.bottomRight,
             child: Container(
-              margin: const EdgeInsets.symmetric(
-                horizontal: 10,
-                vertical: 15,
+              margin: EdgeInsets.symmetric(
+                horizontal:
+                    ResponsiveWidget.isSmallScreen(Get.context!) ? 10 : 50,
+                vertical:
+                    ResponsiveWidget.isSmallScreen(Get.context!) ? 15 : 55,
               ),
-              width: 25,
-              height: 25,
+              width: ResponsiveWidget.isSmallScreen(Get.context!) ? 25 : 50,
+              height: ResponsiveWidget.isSmallScreen(Get.context!) ? 25 : 50,
               decoration: BoxDecoration(
                 color: Palette.mainBlue,
                 shape: BoxShape.circle,
@@ -119,10 +121,10 @@ class RegisterView extends GetView<RegisterController> {
                   width: 1,
                 ),
               ),
-              child: const Icon(
+              child: Icon(
                 Icons.add,
                 color: Palette.white,
-                size: 15,
+                size: ResponsiveWidget.isSmallScreen(Get.context!) ? 15 : 25,
               ),
             ),
           ),
