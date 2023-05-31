@@ -4,6 +4,8 @@ import 'package:proyecto_final_factores_flutter_web/app/modules/home/bindings/ho
 import 'package:proyecto_final_factores_flutter_web/app/modules/home/views/home_view.dart';
 import 'package:proyecto_final_factores_flutter_web/app/modules/login/bindings/login_binding.dart';
 import 'package:proyecto_final_factores_flutter_web/app/modules/login/views/login_view.dart';
+import 'package:proyecto_final_factores_flutter_web/app/modules/my_sales/bindings/my_sales_binding.dart';
+import 'package:proyecto_final_factores_flutter_web/app/modules/my_sales/views/my_sales_view.dart';
 import 'package:proyecto_final_factores_flutter_web/app/modules/register/bindings/register_binding.dart';
 import 'package:proyecto_final_factores_flutter_web/app/modules/register/views/register_view.dart';
 import 'package:proyecto_final_factores_flutter_web/app/modules/registerProduct/bindings/register_product_binding.dart';
@@ -39,6 +41,12 @@ class AppPages {
       name: _Paths.REGISTER_PRODUCT,
       page: () => const RegisterProductView(),
       binding: RegisterProductBinding(),
+      transition: Transition.noTransition,
+    ),
+    GetPage(
+      name: _Paths.MY_SALES,
+      page: () => const MySalesView(),
+      binding: MySalesBinding(),
       transition: Transition.noTransition,
     ),
   ];

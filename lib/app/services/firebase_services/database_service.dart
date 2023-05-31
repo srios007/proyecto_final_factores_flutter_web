@@ -1067,6 +1067,22 @@ class Database {
       return false;
     }
   }
+    /// Guarda un documento dentro de una subcoleccion dado un ID
+  Future<bool> saveDocumentInCollection({
+    required String collection,
+    required Map<String, dynamic> collectionData,
+  }) async {
+    try {
+      final reference =
+          await firestore.collection(collection).add(collectionData);
+      collectionData['id'] = reference.id;
+      await reference.update(collectionData);
+      return true;
+    } on Exception catch (e) {
+      print(e);
+      return false;
+    }
+  }
 }
 
 final Database database = Database();

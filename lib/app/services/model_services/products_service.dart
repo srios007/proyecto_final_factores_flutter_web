@@ -28,9 +28,47 @@ class ProductsService {
     return products;
   }
 
+  Future<RxList> getProductsByShop(String shopId) async {
+    RxList products = [].obs;
+    final querySnapshot = await database.getDataByCustonParam(
+      shopId,
+      productsReference,
+      'shopId',
+    );
+
+    if (querySnapshot.docs.isEmpty) return [].obs;
+    // print('si hay');
+    for (final product in querySnapshot.docs) {
+      products.add(Product.fromJson(
+        product.data() as Map<String, dynamic>,
+      ));
+    }
+    return products;
+  }
+
+  updateProduct({
+    required String productId,
+    required Product data,
+  }) async {
+    try {
+      await database.updateDocument(
+        productId,
+        data.toJson(),
+        productsReference,
+      );
+    } on Exception catch (e) {
+      CustomSnackBars.showErrorSnackBar(
+        'Hubo un error al actualizar el producto',
+      );
+      print(e);
+      return false;
+    }
+  }
+
   getAllProductsByShop(String id) async {
     RxList products = [].obs;
-    final querySnapshot = await database.getDataByCustonParam(id, productsReference, 'shopId');
+    final querySnapshot =
+        await database.getDataByCustonParam(id, productsReference, 'shopId');
     if (querySnapshot.docs.isEmpty) return [];
 
     for (final product in querySnapshot.docs) {

@@ -82,82 +82,44 @@ class _TopBarContentsState extends State<TopBarContents> {
                       ),
                     ),
                     SizedBox(width: Get.width / 30),
-                    // InkWell(
-                    //   onHover: (value) {
-                    //     setState(() {
-                    //       value
-                    //           ? _isHovering[1] = true
-                    //           : _isHovering[1] = false;
-                    //     });
-                    //   },
-                    //   onTap: () => Get.toNamed(Routes.HOME),
-                    //   child: Column(
-                    //     mainAxisSize: MainAxisSize.min,
-                    //     children: [
-                    //       Text(
-                    //         'Agregar empresa',
-                    //         style: TextStyle(
-                    //           color: _isHovering[1]
-                    //               ? Palette.yellow
-                    //               : Palette.white,
-                    //           fontWeight: FontWeight.w300,
-                    //           fontSize: 20,
-                    //         ),
-                    //       ),
-                    //       const SizedBox(height: 5),
-                    //       Visibility(
-                    //         maintainAnimation: true,
-                    //         maintainState: true,
-                    //         maintainSize: true,
-                    //         visible: _isHovering[1],
-                    //         child: Container(
-                    //           height: 2,
-                    //           width: 20,
-                    //           color: Colors.white,
-                    //         ),
-                    //       )
-                    //     ],
-                    //   ),
-                    // ),
-                    // SizedBox(width: Get.width / 30),
-                    // InkWell(
-                    //   onHover: (value) {
-                    //     setState(() {
-                    //       value
-                    //           ? _isHovering[2] = true
-                    //           : _isHovering[2] = false;
-                    //     });
-                    //   },
-                    //   onTap: () => Get.toNamed(Routes.HOME),
-                    //   child: Column(
-                    //     mainAxisSize: MainAxisSize.min,
-                    //     children: [
-                    //       Text(
-                    //         'Contáctanos',
-                    //         style: TextStyle(
-                    //           color: _isHovering[2]
-                    //               ? Palette.yellow
-                    //               : Palette.white,
-                    //           fontWeight: FontWeight.w300,
-                    //           fontSize: 20,
-                    //         ),
-                    //       ),
-                    //       const SizedBox(height: 5),
-                    //       Visibility(
-                    //         maintainAnimation: true,
-                    //         maintainState: true,
-                    //         maintainSize: true,
-                    //         visible: _isHovering[2],
-                    //         child: Container(
-                    //           height: 2,
-                    //           width: 20,
-                    //           color: Colors.white,
-                    //         ),
-                    //       )
-                    //     ],
-                    //   ),
-                    // ),
-                    // SizedBox(width: Get.width / 30),
+                    InkWell(
+                      onHover: (value) {
+                        setState(() {
+                          value
+                              ? _isHovering[1] = true
+                              : _isHovering[1] = false;
+                        });
+                      },
+                      onTap: () => Get.offAllNamed(Routes.MY_SALES),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(
+                            'Mis ventas',
+                            style: TextStyle(
+                              color: _isHovering[1]
+                                  ? Palette.lightGreen
+                                  : Palette.white,
+                              fontWeight: FontWeight.w300,
+                              fontSize: 20,
+                            ),
+                          ),
+                          const SizedBox(height: 5),
+                          Visibility(
+                            maintainAnimation: true,
+                            maintainState: true,
+                            maintainSize: true,
+                            visible: _isHovering[1],
+                            child: Container(
+                              height: 2,
+                              width: 20,
+                              color: Colors.white,
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                    SizedBox(width: Get.width / 30),
                     InkWell(
                       onHover: (value) {
                         setState(() {

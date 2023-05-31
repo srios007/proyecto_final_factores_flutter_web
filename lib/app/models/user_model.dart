@@ -23,7 +23,7 @@ class User {
     profilePictureUrl = json['profilePictureUrl'];
     name = json['name'];
     lastname = json['lastname'];
-    role = json['role'].cast<String>();
+    role = json['role'] == null ? [] : json['role'].cast<String>() ?? [];
   }
 
   Map<String, dynamic> toJson() {
