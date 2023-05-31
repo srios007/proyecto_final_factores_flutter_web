@@ -183,6 +183,11 @@ class HomeView extends GetView<HomeController> {
                 ),
               ),
               const Spacer(),
+                 Text(
+                'Productos disponibles: ${product.stock!}',
+                textAlign: TextAlign.start,
+              ),
+              const Spacer(),
             ],
           ),
         ),
