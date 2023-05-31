@@ -170,15 +170,6 @@ class MySalesView extends GetView<MySalesController> {
               ),
               const Spacer(),
               Text(
-                constants.numberFormat.format(purchase.stock),
-                textAlign: TextAlign.start,
-                style: const TextStyle(
-                  fontWeight: FontWeight.w500,
-                  fontSize: 16,
-                ),
-              ),
-              const Spacer(),
-              Text(
                 'Estado: ${purchase.state!}',
                 textAlign: TextAlign.start,
                 style: const TextStyle(
