@@ -190,8 +190,22 @@ class RegisterProductView extends GetView<RegisterProductController> {
             textEditingController: controller.priceController,
             keyboardType: TextInputType.number,
             inputFormatters: [
-              FilteringTextInputFormatter.allow(
-                  RegExp(r'[0-9]+[,.]{0,1}[0-9]*')),
+              FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
+              TextInputFormatter.withFunction(
+                (oldValue, newValue) => newValue.copyWith(
+                  text: newValue.text.replaceAll('.', ','),
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 25),
+          NormalInput(
+            titleText: 'Stock',
+            hintText: 'Escribe el stock de tu producto',
+            textEditingController: controller.stockController,
+            keyboardType: TextInputType.number,
+            inputFormatters: [
+              FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
               TextInputFormatter.withFunction(
                 (oldValue, newValue) => newValue.copyWith(
                   text: newValue.text.replaceAll('.', ','),

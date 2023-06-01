@@ -14,6 +14,7 @@ class RegisterProductController extends GetxController {
   final TextEditingController priceController = TextEditingController();
   final TextEditingController descController = TextEditingController();
   final TextEditingController nameController = TextEditingController();
+  final TextEditingController stockController = TextEditingController();
 
   final key = GlobalKey<FormState>();
   RxBool isLoadingPP = false.obs;
@@ -52,6 +53,7 @@ class RegisterProductController extends GetxController {
     product.price = int.parse(priceController.text);
     product.imageUrl = pPicture;
     product.shopId = user.id;
+    product.stock = int.parse(stockController.text);
   }
 
   /// Valida si tiene o no foto para subirla
